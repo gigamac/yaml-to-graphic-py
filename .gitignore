@@ -1,0 +1,9 @@
+*.yml
+*.yaml
+*.svg
+node_modules/
+__pycache__/
+pipeline/__pycache__/*
+pipeline/__pycache__/
+.vscode/
+/samples/
