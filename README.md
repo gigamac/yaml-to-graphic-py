@@ -26,8 +26,9 @@ command line execution:
 ```
 
 export to image command:
+```
 mmdc -i mdfilename.md -o mdfilename.svg
-
+```
 
 ## some styling
 
