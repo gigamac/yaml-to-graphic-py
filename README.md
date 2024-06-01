@@ -8,6 +8,9 @@ simple parser to create a mermaid flow diagram from gitlab yaml files
 
 ## How to use it
 
+We are using mermaid syntax to produce the graphics - [marmaid intro](https://mermaid.js.org/intro/) is a good place to start with that  
+
+
 ### make sure your governing stages are included
 
 given this is a flow from a pipeline, the stages must be included.  
