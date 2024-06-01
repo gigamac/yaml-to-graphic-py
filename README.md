@@ -5,6 +5,7 @@ simple parser to create a mermaid flow diagram from gitlab yaml files
   - optional needs are dotted connections
   - artifact needs are thick links
   - it aggregates matching needs from different rules scenarios and displays the properties of the first need in a match
+- it can show you where your yaml is possibly overcomplex or containing redundant stages
 
 ## How to use it
 
