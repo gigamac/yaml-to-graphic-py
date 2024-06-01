@@ -9,6 +9,9 @@ simple parser to create a mermaid flow diagram from gitlab yaml files
 
 ## How to use it
 
+You don't ned to know yaml pipelines to produce these graphics.  
+That said, they are helpful in reviewing yaml, so a pipeline developer/documenter can benefit from them.  
+
 We are using mermaid syntax to produce the graphics - :link: [mermaid intro](https://mermaid.js.org/intro/) is a good place to start with that  
 
 ### make sure your governing stages are included
