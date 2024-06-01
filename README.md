@@ -5,14 +5,8 @@ simple parser to create a mermaid flow diagram from gitlab yaml files
   - optional needs are dotted connections
   - artifact needs are thick links
   - it aggregates matching needs from different rules scenarios and displays the properties of the first need in a match
-- it can show you where your yaml is possibly overcomplex or containing redundant stages
 
 ## How to use it
-
-You don't ned to know yaml pipelines to produce these graphics.  
-That said, they are helpful in reviewing yaml, so a pipeline developer/documenter can benefit from them.  
-
-We are using mermaid syntax to produce the graphics - :link: [mermaid intro](https://mermaid.js.org/intro/) is a good place to start with that  
 
 ### make sure your governing stages are included
 
@@ -46,6 +40,22 @@ linkStyle mth_line, wth_line, zth_line stroke: #3498db,stroke-width:4px,color:bl
 linkStyle ath_line, bth_line, cth_line stroke:  #229954,stroke-width:4px,color:green;
 
 ```
+
+putting it all together this:
+````
+  ```mermaid
+  flowchart TB
+  a -- dependency --> b
+  a -- need --> c
+  b -. need .-> c
+
+  linkStyle 0 stroke: #cb4335,stroke-width:4px,color:red;
+  linkStyle 1 stroke: #3498db,stroke-width:4px,color:blue;
+  linkStyle 2 stroke:  #229954,stroke-width:4px,color:green;
+  ```  
+````
+
+produces this:  
 
 ```mermaid
 flowchart TB
