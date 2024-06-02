@@ -4,6 +4,7 @@ from match_functions.identify_line import identify_line
 from mermaid_flowchart.links import LinksTexted
 from pipeline.Parsers import ParserFunction
 from pipeline.ParsingAssist import ParsingAssist
+from pipeline.give_objects_aliases import give_objects_aliases
 from yaml_objects.job.JobNeed import JobNeeds
 
 
@@ -136,6 +137,11 @@ class Job:
                 print(self.current_line)
                 self.current_line = tryNext(iter_lines)
             matching_rule = identify_line(regex_job, self.current_line)
+        return self
+    
+    def set_alias(self,seed_number):
+        seed_text= 'job-{}'.format(str(seed_number))
+        self.alias = give_objects_aliases([self],seed_text)
         return self
     
     def __repr__(self):

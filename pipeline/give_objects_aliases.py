@@ -4,6 +4,6 @@ def give_objects_aliases(namees, seed):
     for namee in namees:
         alias = assignEntryAlias(alias)
         namee.alias = alias
-        namee.stage_link_name = stage_link_name = '{}-{}'.format(alias, namee.stage)
+        namee.stage_link_name = '{}-{}'.format(alias, namee.name)
 
     return namees

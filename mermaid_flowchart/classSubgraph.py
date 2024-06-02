@@ -26,8 +26,8 @@ class StageSubgraph(Subgraph):
                 self.body.append(link)
 
     def __init__(self, stage, orientation):
-        super().__init__('{}-{}'.format(stage.alias, stage.stage), [], orientation)
+        super().__init__('{}-{}'.format(stage.alias, stage.name), [], orientation)
         self.alias = stage.alias
-        self.actual = stage.stage
+        self.actual = stage.name
         self.link = stage.link
         self.body = []

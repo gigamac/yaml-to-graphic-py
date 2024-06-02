@@ -2,6 +2,7 @@ import re
 from fileinput import filelineno
 from file_functions.tryNext import tryNext
 from match_functions.identify_line import identify_line
+from pipeline.give_objects_aliases import give_objects_aliases
 from pipeline.pipeline_parser import pipeline_parser
 from yaml_objects.job.classJob import Job
 
@@ -40,6 +41,7 @@ class Pipeline:
         self.name = name
         self.iter_lines = iter(input_file)
         self = parse_file(self)
+        give_objects_aliases(self.jobs,'job-0')
 
     # def __repr__(self):
     #     for job in self.jobs:
