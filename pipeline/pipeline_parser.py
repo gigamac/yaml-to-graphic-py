@@ -46,7 +46,7 @@ def pipeline_parser(pipeline_object):
         print(('(^{} ({})').format('(^[a-z,\-,\_,0-9]{1,}):$', 'in other words jobs!'))
         print(current_line)
         job_name = re.search('(^[a-z,\-,\_,0-9]{1,}):$', current_line).group(1)
-        job = Job(job_name).parse_job(pipeline_object.iter_lines).set_alias(len(pipeline_object.jobs))
+        job = Job(job_name).set_alias(len(pipeline_object.jobs)).parse_job(pipeline_object.iter_lines)
         pipeline_object.jobs.append(job)
         return job.current_line
 

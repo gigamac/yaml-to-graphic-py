@@ -20,7 +20,7 @@ class StageSubgraph(Subgraph):
     def  add_jobs_to_body(self,jobs):
         stage_jobs = list(filter(lambda job: (job.stage == self.actual), jobs))
         for job in stage_jobs:
-            self.body.append(job.name)
+            self.body.append('{}'.format(job.name))
         for job in stage_jobs:
             for link in job.links:
                 self.body.append(link)
