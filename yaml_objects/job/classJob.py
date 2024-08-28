@@ -1,6 +1,7 @@
 import re
 from file_functions.tryNext import tryNext
 from match_functions.identify_line import identify_line
+from match_functions.special_characters import Specials
 from mermaid_flowchart.links import LinksTexted
 from pipeline.Parsers import ParserFunction
 from pipeline.ParsingAssist import ParsingAssist
@@ -9,7 +10,7 @@ from yaml_objects.job.JobNeed import JobNeeds
 
 
 class Job:
-    PATTERN_STAGE = '^ *stage: ([a-z,\-,0-9]{1,})$'
+    PATTERN_STAGE = '^ *stage: ([",\[,\],\$,a-z,\-,\_,\.,0-9, ]{1,})$'
     PATTERN_EXTENDS = '^ *extends: \.([a-z,\-]{1,})$'
     PATTERN_NEEDS = '^ *needs: {0,}$'
     PATTERN_DEPENDENCIES = '^ *dependencies: {0,}$'
@@ -61,7 +62,7 @@ class Job:
         return links
 
     def add_stage(self, iter_lines):
-        self.stage = re.search(self.PATTERN_STAGE,self.current_line).group(1)
+        self.stage = Specials().cleanse_special_characters(re.search(self.PATTERN_STAGE,self.current_line).group(1))
         self.current_line = tryNext(iter_lines)
 
     def add_extends(self, iter_lines):
@@ -105,7 +106,7 @@ class Job:
 
     def __init__(self, name):
         self.load_parsers()
-        self.name = name
+        self.name = Specials().cleanse_special_characters(name)
         self.stage = ''
         self.alias = ''
         self.extends = ''

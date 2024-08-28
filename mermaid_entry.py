@@ -15,7 +15,7 @@ args=parser.parse_args()
 pipeline_objects = Pipeline('mermaid-pipeline',openFile.open_file(args.input_file))
 mermaid_flow_objects = MermaidFlowChartObjects().build(pipeline_objects)
 mermaid_flowchart = FlowChart(mermaid_flow_objects, Orient.top2bottom)
-document = write_document(mermaid_flowchart, Orient.top2bottom)
+document = iter(write_document(mermaid_flowchart, Orient.top2bottom))
 output_file_name = args.input_file.split('/')[-1].split('.')[0]
 
 i = 1

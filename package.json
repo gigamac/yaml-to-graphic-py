@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "@mermaid-js/mermaid-cli": "^9.2.2"
+    "@mermaid-js/mermaid-cli": "^10.9.1"
+  },
+  "overrides": {
+    "ws": "8.17.1"
   }
 }
