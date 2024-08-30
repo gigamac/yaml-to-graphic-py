@@ -18,6 +18,7 @@ We are using mermaid syntax to produce the graphics - :link: [mermaid intro](htt
 given this is a flow from a pipeline, the stages must be included.  
 If you have broken down your main pipeline to manage it better :thumbsup: yay! you may have to cut and paste for yaml files that are included from higher files like .gitlabci.yml files.  
 There isnt currently a effort justifies the means plan to incorporate parsing includes for local files copied over.  
+There is an exception to this [when using parameterised names in an included yaml - read this](#when-your-job-and-stage-names-are-parameterised)
 
 ### Constructing a 'bigger picture'
 yml files are easier to maintain when the workflows are broken down into logical chunks.  
@@ -77,3 +78,12 @@ linkStyle 0 stroke: #cb4335,stroke-width:4px,color:red;
 linkStyle 1 stroke: #3498db,stroke-width:4px,color:blue;
 linkStyle 2 stroke:  #229954,stroke-width:4px,color:green;
 ```
+
+
+### When your job and stage names are parameterised
+
+You will not be able to use parent stages to parse the yaml.  
+Parsing is done instead to:
+- remove special characters that may break the flowchart. utf8 codes were considered but this was not 100% reliable
+- stage names cannnot be assumed from governing yaml, so stage names are extracted in the orser of the jobs, which means the jobs are assumed to be in the right order for the stages.
+
