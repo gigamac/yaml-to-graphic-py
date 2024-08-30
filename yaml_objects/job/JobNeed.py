@@ -1,13 +1,14 @@
 import re
 from file_functions.tryNext import tryNext
 from match_functions.identify_line import identify_line
+from match_functions.special_characters import Specials
 from pipeline.Parsers import ParserFunction
 
 
 class JobNeeds:
     job_needs = []
     current_line = ''
-    PATTERN_JOB_SPEC = '^ {{{}}} {{0,}}- job: ([a-z,\-,0-9]*)'
+    PATTERN_JOB_SPEC = '^ {{{}}} {{0,}}- job: ([",\[,\],\$,a-z,\-,\_,\.,0-9, ]{{1,}})'
     PATTERN_JOB = '^ {{{}}} {{1,}}- ([a-z,\-,0-9]*)[^:]{{0,1}}'
     PATTERN_JOB_ARTIFACT_TF = '^ {{{}}} {{1,}}artifacts: ([a-z]*)$'
     PATTERN_JOB_OPTIONAL_TF = '^ {{{}}} {{1,}}optional: ([a-z]*)$'
@@ -15,7 +16,7 @@ class JobNeeds:
     job_needs_parsers = []
 
     def job_spec(self,matching_rule, job_need, current_line):
-        job_name = re.search(matching_rule,current_line).group(1)
+        job_name = Specials().cleanse_special_characters(re.search(matching_rule,current_line).group(1))
         print(job_name)
         job_done = None
         if job_need.needed_job != '':
